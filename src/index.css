@@ -1,0 +1,356 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "MS PGothic", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  /* Strict 2000s Hardware Color System */
+  --sys-blue-deep: #001224;
+  --sys-blue-mid: #002b4d;
+  --sys-blue-light: #1a3a5a;
+  --sys-cyan: #00f2ff;
+  --sys-magenta: #ff00ff;
+  --sys-white: #e0e0e0;
+  --sys-black: #000810;
+  
+  /* Atmosphere Variables (Modified by SystemContext) */
+  --atm-brightness: 1;
+  --atm-contrast: 1;
+  --atm-saturation: 1;
+  --atm-tint: transparent;
+
+/* Unified Panel Styles */
+  --border-main: 1px solid rgba(74, 144, 226, 0.25);
+  --border-bright: 1px solid rgba(0, 242, 255, 0.6);
+  --glow-soft: 0 0 12px rgba(0, 242, 255, 0.15);
+  --glow-hard: 0 0 20px rgba(0, 242, 255, 0.4);
+  
+  /* Unified Transitions */
+  --trans-standard: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --trans-mechanical: 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  --trans-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Unified Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+}
+
+[data-atmosphere="morning"] {
+  --atm-brightness: 1.05;
+  --atm-contrast: 0.95;
+  --atm-tint: rgba(200, 230, 255, 0.05);
+}
+
+[data-atmosphere="evening"] {
+  --atm-brightness: 0.9;
+  --atm-contrast: 1.1;
+  --atm-tint: rgba(100, 0, 150, 0.05);
+}
+
+[data-atmosphere="late-night"] {
+  --atm-brightness: 0.7;
+  --atm-contrast: 1.2;
+  --atm-saturation: 0.8;
+  --atm-tint: rgba(0, 0, 50, 0.1);
+}
+
+body {
+  background: var(--sys-black);
+  color: var(--sys-white);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: none;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  filter: brightness(var(--atm-brightness)) contrast(var(--atm-contrast)) saturate(var(--atm-saturation));
+  transition: filter 4s ease-in-out;
+}
+
+/* Global Imperfection & Noise Layer */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, transparent, rgba(0,0,0,0.1));
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+/* Screen Effects Layer */
+.screen-effects {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.08) 50%
+  );
+  background-size: 100% 2px;
+  opacity: 0.6;
+}
+
+.pixel-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, transparent 40%, rgba(0, 0, 0, 0.5) 140%);
+}
+
+.bloom {
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(0.4px);
+  mask-image: radial-gradient(circle, black 75%, transparent 100%);
+  opacity: 0.2;
+}
+
+/* Unified Hardware Panel System */
+.glossy-panel {
+  background: linear-gradient(180deg, #1e3c72 0%, #001224 100%);
+  border: var(--border-main);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.15),
+    inset 0 -1px 0 rgba(0,0,0,0.4),
+    0 8px 24px rgba(0,0,0,0.7);
+  position: relative;
+  overflow: hidden;
+}
+
+.glossy-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.03) 50%, transparent 52%);
+  background-size: 200% 200%;
+  pointer-events: none;
+}
+
+.glossy-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.1), rgba(255,255,255,0));
+  pointer-events: none;
+}
+
+/* Background Ambient */
+.bg-ambient {
+  background: radial-gradient(circle at 50% 50%, var(--sys-blue-mid) 0%, var(--sys-black) 100%);
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.bg-ambient::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg at 50% 50%, transparent, rgba(0, 242, 255, 0.02), transparent);
+  animation: rotate-ambient 40s linear infinite;
+}
+
+@keyframes rotate-ambient {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Focused State - Hardware Backlit Feel */
+.focused {
+  outline: none;
+  border: var(--border-bright) !important;
+  box-shadow: 
+    0 0 20px rgba(0, 242, 255, 0.3),
+    inset 0 0 10px rgba(0, 242, 255, 0.1);
+  z-index: 50;
+  filter: brightness(1.1) contrast(1.05);
+  transform: scale(1.01) translateZ(10px);
+  transition: transform var(--trans-standard), border var(--trans-standard), box-shadow var(--trans-standard);
+}
+
+/* EPG Cell Style - Dense & Integrated */
+.epg-cell {
+  background: #001a33;
+  border: 1px solid rgba(74, 144, 226, 0.15);
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.03);
+  transition: background 0.1s ease-out;
+}
+
+.epg-cell.active {
+  background: linear-gradient(to bottom, #004080, #00264d);
+  border-color: var(--sys-cyan);
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+/* Typography - Embedded Feel */
+.text-epg-title {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.5);
+}
+
+.text-epg-time {
+  font-size: 9px;
+  font-family: var(--font-mono);
+  color: var(--sys-cyan);
+  opacity: 0.7;
+  letter-spacing: 0.05em;
+}
+
+/* Badges - Non-Neon, More Physical */
+.badge-live {
+  background: #cc0000;
+  color: white;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 1px 3px;
+  border-radius: 1px;
+  box-shadow: 0 0 4px rgba(204, 0, 0, 0.4);
+}
+
+.badge-trending {
+  background: #cc00cc;
+  color: white;
+  font-size: 8px;
+  font-weight: 900;
+  padding: 1px 3px;
+  border-radius: 1px;
+  box-shadow: 0 0 6px rgba(204, 0, 204, 0.4);
+}
+
+/* Boot Screen - Hardware Initialization */
+.boot-screen {
+  background: #000;
+  z-index: 10000;
+  font-family: var(--font-mono);
+}
+
+.boot-logo {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+  letter-spacing: -0.05em;
+  font-family: var(--font-sans);
+}
+
+.boot-info {
+  color: #00cc00; /* Classic terminal green */
+  font-size: 9px;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+
+/* Scrollbar - Integrated Hardware Look */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000c18;
+  border-left: 1px solid rgba(74, 144, 226, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #1a3a5a, #001a2c);
+  border: 2px solid #000c18;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.1);
+}
+
+/* Chrome / Header Style - Merged with Frame */
+.tv-chrome {
+  background: linear-gradient(to bottom, #1a1a1a, #000000);
+  border-bottom: 2px solid #333;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.9);
+}
+
+/* Progress Bar - Integrated */
+.progress-bar-container {
+  height: 2px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.progress-bar-fill {
+  background: var(--sys-cyan);
+  box-shadow: 0 0 4px var(--sys-cyan);
+}
+
+/* TV Player & OSD Specific Styles */
+.osd-panel {
+  background: linear-gradient(180deg, rgba(30, 60, 114, 0.85) 0%, rgba(0, 18, 36, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  border: var(--border-main);
+  box-shadow: 
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 15px 40px rgba(0,0,0,0.9);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--sys-blue-light);
+  border-radius: 3px;
+}
+
+/* Weighted Transition for Player */
+.player-transition-enter {
+  transform: scale(1.1);
+  filter: blur(10px) brightness(2);
+  opacity: 0;
+}
+
+.player-transition-enter-active {
+  transform: scale(1);
+  filter: blur(0) brightness(1);
+  opacity: 1;
+  transition: all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.rounded-px {
+  border-radius: 1px;
+}

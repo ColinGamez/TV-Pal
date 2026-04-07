@@ -1,0 +1,19 @@
+[
+  { "channelId": "gguide-dt-1", "number": "1", "name": "NHK総合1", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-2", "number": "2", "name": "NHKEテレ1", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-4", "number": "4", "name": "日本テレビ", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-5", "number": "5", "name": "テレビ朝日", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-6", "number": "6", "name": "TBS", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-7", "number": "7", "name": "テレビ東京", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-8", "number": "8", "name": "フジテレビ", "group": "Terrestrial" },
+  { "channelId": "gguide-dt-9", "number": "9", "name": "TOKYO MX", "group": "Terrestrial" },
+  { "channelId": "gguide-bs-101", "number": "101", "name": "NHK BS", "group": "BS" },
+  { "channelId": "gguide-bs-141", "number": "141", "name": "BS日テレ", "group": "BS" },
+  { "channelId": "gguide-bs-151", "number": "151", "name": "BS朝日", "group": "BS" },
+  { "channelId": "gguide-bs-161", "number": "161", "name": "BS-TBS", "group": "BS" },
+  { "channelId": "gguide-bs-171", "number": "171", "name": "BSテレ東", "group": "BS" },
+  { "channelId": "gguide-bs-181", "number": "181", "name": "BSフジ", "group": "BS" },
+  { "channelId": "gguide-bs-191", "number": "191", "name": "WOWOWプライム", "group": "BS" },
+  { "channelId": "gguide-bs-211", "number": "211", "name": "BS11イレブン", "group": "BS" },
+  { "channelId": "gguide-bs-222", "number": "222", "name": "BS12トゥエルビ", "group": "BS" }
+]

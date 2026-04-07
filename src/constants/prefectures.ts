@@ -1,0 +1,57 @@
+export interface Prefecture {
+  id: string;
+  name: string;
+  en: string;
+  areaCode: string;
+  region: string;
+}
+
+export const PREFECTURES: Prefecture[] = [
+  { id: 'hokkaido', name: '北海道', en: 'Hokkaido', areaCode: '1', region: '北海道' },
+  { id: 'aomori', name: '青森県', en: 'Aomori', areaCode: '2', region: '東北' },
+  { id: 'iwate', name: '岩手県', en: 'Iwate', areaCode: '3', region: '東北' },
+  { id: 'miyagi', name: '宮城県', en: 'Miyagi', areaCode: '4', region: '東北' },
+  { id: 'akita', name: '秋田県', en: 'Akita', areaCode: '5', region: '東北' },
+  { id: 'yamagata', name: '山形県', en: 'Yamagata', areaCode: '6', region: '東北' },
+  { id: 'fukushima', name: '福島県', en: 'Fukushima', areaCode: '7', region: '東北' },
+  { id: 'ibaraki', name: '茨城県', en: 'Ibaraki', areaCode: '8', region: '関東' },
+  { id: 'tochigi', name: '栃木県', en: 'Tochigi', areaCode: '9', region: '関東' },
+  { id: 'gunma', name: '群馬県', en: 'Gunma', areaCode: '10', region: '関東' },
+  { id: 'saitama', name: '埼玉県', en: 'Saitama', areaCode: '11', region: '関東' },
+  { id: 'chiba', name: '千葉県', en: 'Chiba', areaCode: '12', region: '関東' },
+  { id: 'tokyo', name: '東京都', en: 'Tokyo', areaCode: '23', region: '関東' },
+  { id: 'kanagawa', name: '神奈川県', en: 'Kanagawa', areaCode: '14', region: '関東' },
+  { id: 'niigata', name: '新潟県', en: 'Niigata', areaCode: '15', region: '中部' },
+  { id: 'toyama', name: '富山県', en: 'Toyama', areaCode: '16', region: '中部' },
+  { id: 'ishikawa', name: '石川県', en: 'Ishikawa', areaCode: '17', region: '中部' },
+  { id: 'fukui', name: '福井県', en: 'Fukui', areaCode: '18', region: '中部' },
+  { id: 'yamanashi', name: '山梨県', en: 'Yamanashi', areaCode: '19', region: '中部' },
+  { id: 'nagano', name: '長野県', en: 'Nagano', areaCode: '20', region: '中部' },
+  { id: 'gifu', name: '岐阜県', en: 'Gifu', areaCode: '21', region: '中部' },
+  { id: 'shizuoka', name: '静岡県', en: 'Shizuoka', areaCode: '22', region: '中部' },
+  { id: 'aichi', name: '愛知県', en: 'Aichi', areaCode: '24', region: '中部' },
+  { id: 'mie', name: '三重県', en: 'Mie', areaCode: '25', region: '近畿' },
+  { id: 'shiga', name: '滋賀県', en: 'Shiga', areaCode: '26', region: '近畿' },
+  { id: 'kyoto', name: '京都府', en: 'Kyoto', areaCode: '27', region: '近畿' },
+  { id: 'osaka', name: '大阪府', en: 'Osaka', areaCode: '28', region: '近畿' },
+  { id: 'hyogo', name: '兵庫県', en: 'Hyogo', areaCode: '29', region: '近畿' },
+  { id: 'nara', name: '奈良県', en: 'Nara', areaCode: '30', region: '近畿' },
+  { id: 'wakayama', name: '和歌山県', en: 'Wakayama', areaCode: '31', region: '近畿' },
+  { id: 'tottori', name: '鳥取県', en: 'Tottori', areaCode: '32', region: '中国' },
+  { id: 'shimane', name: '島根県', en: 'Shimane', areaCode: '33', region: '中国' },
+  { id: 'okayama', name: '岡山県', en: 'Okayama', areaCode: '34', region: '中国' },
+  { id: 'hiroshima', name: '広島県', en: 'Hiroshima', areaCode: '35', region: '中国' },
+  { id: 'yamaguchi', name: '山口県', en: 'Yamaguchi', areaCode: '36', region: '中国' },
+  { id: 'tokushima', name: '徳島県', en: 'Tokushima', areaCode: '37', region: '四国' },
+  { id: 'kagawa', name: '香川県', en: 'Kagawa', areaCode: '38', region: '四国' },
+  { id: 'ehime', name: '愛媛県', en: 'Ehime', areaCode: '39', region: '四国' },
+  { id: 'kochi', name: '高知県', en: 'Kochi', areaCode: '40', region: '四国' },
+  { id: 'fukuoka', name: '福岡県', en: 'Fukuoka', areaCode: '41', region: '九州' },
+  { id: 'saga', name: '佐賀県', en: 'Saga', areaCode: '42', region: '九州' },
+  { id: 'nagasaki', name: '長崎県', en: 'Nagasaki', areaCode: '43', region: '九州' },
+  { id: 'kumamoto', name: '熊本県', en: 'Kumamoto', areaCode: '44', region: '九州' },
+  { id: 'oita', name: '大分県', en: 'Oita', areaCode: '45', region: '九州' },
+  { id: 'miyazaki', name: '宮崎県', en: 'Miyazaki', areaCode: '46', region: '九州' },
+  { id: 'kagoshima', name: '鹿児島県', en: 'Kagoshima', areaCode: '47', region: '九州' },
+  { id: 'okinawa', name: '沖縄県', en: 'Okinawa', areaCode: '48', region: '沖縄' },
+];
